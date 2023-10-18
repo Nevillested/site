@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Best girl<3</title>
+</head>
+<body>
+
+
+            <div id="messages">
+			</div>
+	
+	
+	
+    <script>
+        function updateMessages() {
+            $.get("/get_messages", function (data) {
+                let messages = data.messages.join('<br>');
+                $("#messages").html(messages);
+            });
+        }
+
+        updateMessages();
+
+        setInterval(updateMessages, 5000);
+    </script>
+	
+</body>
+</html>
